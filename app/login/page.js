@@ -1,9 +1,10 @@
 'use client';
+
 import { useAuth } from '../../context/AuthContext';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function LoginPage() {
+export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const role = searchParams.get('role');
@@ -16,7 +17,7 @@ export default function LoginPage() {
     if (isLoggedIn) {
       router.push(role === 'seller' ? '/seller-dashboard' : '/home');
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, role, router]); // ✅ added missing dependencies
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ export default function LoginPage() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#f4f4f4' // Optional background
+      backgroundColor: '#f4f4f4'
     }}>
       <div style={{
         width: '400px',

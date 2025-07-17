@@ -1,7 +1,7 @@
-
 'use client';
 import foodItems from '../data/foodData';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const FoodGrid = () => {
   const router = useRouter();
@@ -22,12 +22,23 @@ const FoodGrid = () => {
           backgroundColor: '#f9f9f9',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
         }}>
-          <img src={item.image} alt={item.name} style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '8px' }} />
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={300}
+            height={180}
+            style={{
+              width: '100%',
+              height: '180px',
+              objectFit: 'cover',
+              borderRadius: '8px'
+            }}
+          />
           <h3 style={{ marginTop: '10px', fontSize: '18px', color: '#111' }}>{item.name}</h3>
           <p style={{ color: '#444', fontSize: '16px' }}>₹{item.price}</p>
           <button
             style={{
-               cursor: 'pointer',
+              cursor: 'pointer',
               marginTop: '10px',
               padding: '10px 20px',
               backgroundColor: '#2886a8ff',
@@ -35,7 +46,6 @@ const FoodGrid = () => {
               border: 'none',
               borderRadius: '5px',
               fontWeight: 'bold'
-              
             }}
             onClick={() => router.push(`/buy/${item.id}`)}
           >

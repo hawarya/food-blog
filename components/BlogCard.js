@@ -1,10 +1,17 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogCard({ post, onEdit, onDelete }) {
   return (
     <div style={cardStyle}>
-      <img src={post.image} alt={post.title} style={imageStyle} />
+      <Image
+        src={post.image}
+        alt={post.title}
+        width={400}           // Required by next/image
+        height={180}          // Matches your imageStyle height
+        style={imageStyle}
+      />
       <h3 style={titleStyle}>{post.title}</h3>
 
       <div style={buttonGroup}>
@@ -19,19 +26,18 @@ export default function BlogCard({ post, onEdit, onDelete }) {
 }
 
 const cardStyle = {
-  width: '400px', 
+  width: '400px',
   minWidth: '280px',
   backgroundColor: '#ffffff',
   border: '1px solid hsla(0, 4%, 11%, 0.10)',
   borderRadius: '8px',
- boxShadow: '1px 3px 12px 4px rgba(6, 4, 4, 0.1)',
+  boxShadow: '1px 3px 12px 4px rgba(6, 4, 4, 0.1)',
   padding: '12px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '10px',
   margin: '10px',
-  
   cursor: 'pointer',
 };
 
@@ -78,7 +84,6 @@ const editBtn = {
   cursor: 'pointer',
   flex: 1,
   fontWeight: 'bold',
-  
 };
 
 const deleteBtn = {
